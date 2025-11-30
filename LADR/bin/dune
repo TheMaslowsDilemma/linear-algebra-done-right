@@ -1,0 +1,4 @@
+(executable
+ (public_name LADR)
+ (name main)
+ (libraries LADR))
