@@ -1,0 +1,24 @@
+-----------------------------------------------------------
+Notes
+-----------------------------------------------------------
+
+
+---- some useful commands ---
+
+dune utop lib -- -implicitbind
+
+	this will open utop with all the code loaded, so it could
+	help with some problem sets etc for quick calculation
+	checks.
+
+
+dune runtest
+	
+	if we end up making tests (probably won't)
+
+
+dune fmt   or   dune fmt --auto-promote
+	
+	format the project using ocamlformat. the .ocamlformat
+	file holds this project format settings, currently default
+
