@@ -22,3 +22,81 @@ dune fmt   or   dune fmt --auto-promote
 	format the project using ocamlformat. the .ocamlformat
 	file holds this project format settings, currently default
 
+
+
+-------------------Sublime Key Bindings--------------------------
+
+
+[
+    // CNTR + ` to toggle pannel
+    { 
+        "keys": ["alt+`"], "command": "toggle_terminus_panel"
+    },
+
+    // DUNE FORMATTER FOR OCAML //
+    {
+        "keys": ["ctrl+shift+d"],
+        "command": "exec", 
+        "args": {
+            "shell_cmd": "dune fmt --auto-promote",
+            "path": "/Users/thomasflatley/.opam/default/bin:${PATH}",
+        },
+        "working_dir": "${folder}"
+    },
+
+    // TAB: Indent selected lines OR insert tab character
+    {
+        "keys": ["tab"],
+        "command": "indent",
+        "context": [
+            { "key": "setting.tab_completion", "operand": true },
+            { "key": "selection_empty", "operator": "equal", "operand": false, "match_all": true }
+        ]
+    },
+    {
+        "keys": ["tab"],
+        "command": "insert_best_completion",
+        "args": { "default": "\t", "exact": true },
+        "context": [
+            { "key": "setting.tab_completion", "operand": true }
+        ]
+    },
+    {
+        "keys": ["tab"],
+        "command": "insert_best_completion",
+        "args": { "default": "\t", "exact": false },
+        "context": [
+            { "key": "setting.tab_completion", "operand": true },
+            { "key": "auto_complete_visible" }
+        ]
+    },
+    {
+        "keys": ["tab"],
+        "command": "insert",
+        "args": { "characters": "\t" },
+        "context": [
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "\\S" },
+            { "key": "setting.tab_completion", "operand": false }
+        ]
+    },
+    {
+        "keys": ["tab"],
+        "command": "indent",
+        "context": [
+            { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+            { "key": "preceding_text", "operator": "regex_contains", "operand": "^\\s*$" },
+            { "key": "setting.tab_completion", "operand": false }
+        ]
+    },
+
+    // SHIFT+TAB: Always un-indent
+    {
+        "keys": ["shift+tab"],
+        "command": "unindent",
+        "context": [
+            { "key": "setting.shift_tab_unindent", "operand": true }
+        ]
+    }
+]
+
