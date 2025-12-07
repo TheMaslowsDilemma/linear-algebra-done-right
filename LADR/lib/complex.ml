@@ -1,23 +1,26 @@
-
 type t = float * float
+type scalar = float
 
 let zero = (0.0, 0.0)
 let one = (1.0, 0.0)
 let i = (0.0, 1.0)
 
 let add (a, b) (c, d) = (a +. c, b +. d)
-let add_inv (a, b) = (-.a, -.b)
+let sub (a, b) (c, d) = (a -. c, b -. d)
+
+let neg (a, b) = (-.a, -.b)
+let inv (a, b) = let y = -.b /. ((a *. a) +. (b *. b)) in
+    let x = (1. +. (b *. y)) /. a in
+    (x, y)
 
 let mul (a, b) (c, d) = ((a *. c) -. (b *. d), (a *. d) +. (b *. c))
-
-let mul_inv (a, b) =
-  if a = 0. then None
-  else
-    let y = -.b /. ((a *. a) +. (b *. b)) in
-    let x = (1. +. (b *. y)) /. a in
-    Some (x, y)
-
 let sclr_mul k (a, b) = (k *. a, k *. b)
+let div a b = inv b |> mul a
+
+let norm (a, b) = sqrt (a *. a +. b *. b)
+
+let equal (a, b)  (c, d) = (a = c && b = d)
+let eequal ?(epsilon=1e-9) a b = norm ( sub a b ) < epsilon
+
 let of_pair (a, b) = (a, b)
 let to_string (a, b) = Printf.sprintf "(%.10g + %.10gi)" a b
-
