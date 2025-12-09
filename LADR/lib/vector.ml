@@ -5,6 +5,7 @@ module type S = sig
   val zero : int -> t
   val one : int -> t
   val dim : t -> int
+  val nth : t -> int -> scalar
   val add : t -> t -> t
   val scale : scalar -> t -> t
   val of_list : scalar list -> t
@@ -17,6 +18,7 @@ module Make (F : Field.S) = struct
 
   let zero n = Array.make n F.zero
   let one n = Array.make n F.one
+  let nth v n = v.(n)
   let dim a = Array.length a
   let of_list lst = Array.of_list lst
 
