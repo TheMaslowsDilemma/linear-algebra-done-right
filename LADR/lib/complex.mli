@@ -22,6 +22,10 @@ val inv : t -> t
 (*** Norm ***)
 val norm : t -> scalar
 
+(*** Sqrt ***)
+(* Note: this doesnt work when b < 0, where a + bi *)
+val root2 : t -> t
+
 (*** Equalities ***)
 val equal : t -> t -> bool
 val eequal : ?epsilon:float -> t -> t -> bool

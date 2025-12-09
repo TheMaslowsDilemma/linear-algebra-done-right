@@ -1,29 +1,31 @@
 module type S = sig
-	type t
+  type t
 
-	(* additive identity *)
-	val zero : t
+  (* additive identity *)
+  val zero : t
 
-	(* multiplicative identity *)
-	val one : t
+  (* multiplicative identity *)
+  val one : t
 
-	(* operators *)
-	val add : t -> t -> t
-	val sub : t -> t -> t
-	val mul : t -> t -> t
-	val div : t -> t -> t
+  (* operators *)
+  val add : t -> t -> t
+  val sub : t -> t -> t
+  val mul : t -> t -> t
+  val div : t -> t -> t
 
-	(* inverses *)
-	val neg : t -> t
-	val inv : t -> t
+  (* inverses *)
+  val neg : t -> t
+  val inv : t -> t
 
-	(* equality *)
-	val equal : t -> t -> bool
+  (* square root *)
+  val root2 : t -> t
 
-	(* approximate epsilon equality *)
-	val eequal : ?epsilon:float -> t -> t -> bool
+  (* equality *)
+  val equal : t -> t -> bool
 
-	val to_string : t -> string
+  (* approximate epsilon equality *)
+  val eequal : ?epsilon:float -> t -> t -> bool
+  val to_string : t -> string
 end
 
 module Float : S with type t = float

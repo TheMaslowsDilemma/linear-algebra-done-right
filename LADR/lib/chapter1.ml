@@ -5,7 +5,6 @@ let exercise_1A_P7 () =
   let v = mul (mul u u) u in
   Printf.printf "u: %s\nu^3: %s\n\n" (to_string u) (to_string v)
 
-
 (* i tried to find a counter example... i couldnt *)
 let exercise_1C_P6b () =
   let open Field.Complex in
@@ -23,8 +22,15 @@ let exercise_1C_P6b () =
   Printf.printf "ia: %s\tia^3: %s\n" (to_string ia) (to_string iaiaia);
   Printf.printf "ib: %s\tib^3: %s\n" (to_string ib) (to_string ibibib)
 
+let square_root_test () =
+  let open Complex in
+  let u = of_pair (1.0, 0.4) in
+  let sqrt_u = root2 u in
+  let susu = mul sqrt_u sqrt_u in
+  Printf.printf "u: %s\t sqrt_u: %s\t sqrt_u^2: %s\n" (to_string u)
+    (to_string sqrt_u) (to_string susu)
 
-
-let run () = 
+let run () =
   let () = exercise_1A_P7 () in
-  exercise_1C_P6b ()
+  let () = exercise_1C_P6b () in
+  square_root_test ()
