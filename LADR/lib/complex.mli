@@ -5,6 +5,8 @@ type scalar = float
 val zero : t
 val one : t
 val i : t
+val real : t -> scalar
+val img : t -> scalar
 
 (*** Addition ***)
 val add : t -> t -> t
