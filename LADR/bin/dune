@@ -1,4 +1,4 @@
 (executable
  (public_name LADR)
  (name main)
- (libraries LADR graphics ))
+ (libraries LADR graphics))
