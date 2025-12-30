@@ -1,5 +1,4 @@
-open Graphics
-
+open Vector
 (* a vector in R^2 can be drawn *)
 let r2_draw v2 = 
   Graphics.fill_circle (int_of_float (RealVector.nth v2 0)) (int_of_float (RealVector.nth v2 1)) 4
