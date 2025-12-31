@@ -46,7 +46,7 @@ let exercise_2A_P8 () =
 *)
 
 let excercise_2C_10 base power =
-  let m = 4. in
+  let m = 10. in
   let pk k x = (x ** k) *. ((1. -. x) ** (m -. k)) in
 
   (* we prove here that any x^i can be formed lin. comb.
@@ -88,4 +88,4 @@ let excercise_2C_10 base power =
   in
   Printf.printf "pow(%f, %d) = %f\n" base power (pow_i power base)
 
-let run () = excercise_2C_10 6.0 3
+let run () = excercise_2C_10 4.0 8
