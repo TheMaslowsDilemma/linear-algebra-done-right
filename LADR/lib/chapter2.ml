@@ -84,8 +84,8 @@ let excercise_2C_10 base power =
           in
           aux tri_rst fxs_rst (pow_n :: acc)
     in
-    (aux triangle_i (List.rev p_fxs) []) x
+    (aux triangle_i (List.rev p_fxs) []) x *. (-1.0)
   in
   Printf.printf "pow(%f, %d) = %f\n" base power (pow_i power base)
 
-let run () = excercise_2C_10 4.0 8
+let run () = excercise_2C_10 (4.0) 7
