@@ -1,6 +1,7 @@
 module type S = sig
   type t
   type scalar
+  type view
 
   val zero : int -> t
   val one : int -> t
@@ -10,6 +11,7 @@ module type S = sig
   val scale : scalar -> t -> t
   val of_list : scalar list -> t
   val to_string : t -> string
+  val equal : t -> t -> bool
 end
 
 module Make (F : Field.S) = struct
@@ -32,6 +34,14 @@ module Make (F : Field.S) = struct
   let to_string v =
     let elements = Array.map F.to_string v |> Array.to_list in
     "[ " ^ String.concat "; " elements ^ " ]"
+
+  let equal v1 v2 =
+    let compare_elms u v =
+      Array.fold_left (fun acc uu -> (Array.exists (fun vv -> vv = uu) v && acc)) true u
+    in
+    let equal_dims = (dim v1) = (dim v2) in
+    if equal_dims then compare_elms v1 v2
+    else false
 end
 
 module RealVector = Make (Field.Float)

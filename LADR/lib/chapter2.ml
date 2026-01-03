@@ -88,4 +88,4 @@ let excercise_2C_10 base power =
   in
   Printf.printf "pow(%f, %d) = %f\n" base power (pow_i power base)
 
-let run () = excercise_2C_10 (4.0) 7
+let run () = excercise_2C_10 (4.0) 9
