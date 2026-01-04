@@ -37,11 +37,12 @@ module Make (F : Field.S) = struct
 
   let equal v1 v2 =
     let compare_elms u v =
-      Array.fold_left (fun acc uu -> (Array.exists (fun vv -> vv = uu) v && acc)) true u
+      Array.fold_left
+        (fun acc uu -> Array.exists (fun vv -> vv = uu) v && acc)
+        true u
     in
-    let equal_dims = (dim v1) = (dim v2) in
-    if equal_dims then compare_elms v1 v2
-    else false
+    let equal_dims = dim v1 = dim v2 in
+    if equal_dims then compare_elms v1 v2 else false
 end
 
 module RealVector = Make (Field.Float)

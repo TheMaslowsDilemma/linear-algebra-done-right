@@ -29,13 +29,11 @@ let pascals_triangle row =
   in
   if row < 1 then [] else aux (row - 1) [ [ 1. ] ]
 
-
 let exercise_2A_P8 () =
   let open Vector.RealVector in
   let a = of_list [ 3.; 1.; 4. ] in
   let b = of_list [ 2.; -3.; 5. ] in
   Printf.printf "a + b: %s\n" (add a b |> to_string)
-
 
 (* side note: this looks like the binomial distribution 
    we want to show we can build x^i with 0 <= i <= m
@@ -84,8 +82,8 @@ let excercise_2C_10 base power =
           in
           aux tri_rst fxs_rst (pow_n :: acc)
     in
-    (aux triangle_i (List.rev p_fxs) []) x *. (-1.0)
+    (aux triangle_i (List.rev p_fxs) []) x *. -1.0
   in
   Printf.printf "pow(%f, %d) = %f\n" base power (pow_i power base)
 
-let run () = excercise_2C_10 (4.0) 9
+let run () = excercise_2C_10 4.0 9
